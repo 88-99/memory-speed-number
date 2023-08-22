@@ -2,6 +2,7 @@
 
 "use strict";
 
+import { Formatter } from "./formatter.js";
 import enquirer from "enquirer";
 
 const { Select, Input } = enquirer;
@@ -59,14 +60,16 @@ async function main() {
       .then((key) => {
         if (key === "yes") {
           console.log("-- Your answer --");
-          outputForm(
+          const formattedUsersAnswer = new Formatter(
             generateHighlightedNumbers(
               usersAnswer,
               findIncorrectIndexes(correctAnswer, usersAnswer)
             )
           );
+          formattedUsersAnswer.selectFormat();
           console.log("-- Correct answer --");
-          outputForm(correctAnswer);
+          const formattedCorrectAnswer = new Formatter(correctAnswer);
+          formattedCorrectAnswer.selectFormat();
         }
       });
   }
@@ -99,7 +102,8 @@ function generateRandomNumbers(digits) {
 }
 
 function clearTerminalAfterDelay(digits, seconds, correctAnswer, callback) {
-  outputForm(correctAnswer);
+  const formatter = new Formatter(correctAnswer);
+  formatter.selectFormat();
 
   setTimeout(() => {
     process.stdout.write("\x1b[18A\x1b[0J");
@@ -126,53 +130,4 @@ function generateHighlightedNumbers(numbers, highlightIndexes) {
     highlightIndexes.includes(index) ? `\x1b[7m${number}\x1b[0m` : number
   );
   return highlightedNumbers;
-}
-
-function outputForm(numbers) {
-  const chunkSize = 5;
-  const chunkedNumbers = [];
-  const space = () => {
-    return " ".repeat(12);
-  };
-
-  if (numbers.length <= chunkSize) {
-    console.log();
-    console.log(space() + numbers.join(" "));
-    console.log();
-  } else {
-    for (let i = 0; i < numbers.length; i += chunkSize) {
-      chunkedNumbers.push(numbers.slice(i, i + chunkSize));
-    }
-
-    for (let i = 0; i < chunkedNumbers.length; i++) {
-      const chunk = chunkedNumbers[i];
-
-      if (i === 0) {
-        console.log();
-      }
-      console.log(space() + chunk.join(" "));
-      console.log();
-
-      if (i !== chunkedNumbers.length - 1) {
-        if (findHighlitedStrings(chunk) > 0) {
-          console.log(
-            space() +
-              "-".repeat(
-                chunk.join(" ").length - findHighlitedStrings(chunk) * 8
-              )
-          );
-        } else {
-          console.log(space() + "-".repeat(chunk.join(" ").length));
-        }
-        console.log();
-      }
-    }
-  }
-}
-
-function findHighlitedStrings(numbers) {
-  const highlitedStrings = numbers.filter(
-    (element) => typeof element === "string" && element.startsWith("\x1B[")
-  );
-  return highlitedStrings.length;
 }
