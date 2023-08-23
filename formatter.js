@@ -38,7 +38,7 @@ export class Formatter {
         if (HighlitedStrings > 0) {
           console.log(
             this.space() +
-              "-".repeat(chunk.join(" ").length - HighlitedStrings * 8),
+              "-".repeat(chunk.join(" ").length - HighlitedStrings * 8)
           );
         } else {
           console.log(this.space() + "-".repeat(chunk.join(" ").length));
@@ -68,7 +68,7 @@ export class Formatter {
 
   findHighlitedStrings(numbers) {
     const highlitedStrings = numbers.filter(
-      (element) => typeof element === "string" && element.startsWith("\x1B["),
+      (element) => typeof element === "string" && element.startsWith("\x1B[")
     );
     return highlitedStrings.length;
   }

@@ -12,7 +12,7 @@ async function main() {
   const selectSecondsPrompt = new Select({
     message: "How many seconds for limit time?",
     choices: ["3", "5", "10", "30", "60", "120", "180"],
-    hint: " (Enter a number.)",
+    hint: " (Enter a number.)"
   });
 
   const inputUsersAnswerPrompt = new Input({
@@ -24,7 +24,7 @@ async function main() {
       return value.length === 0 || value.length > 25 || /[^\d]/.test(value)
         ? "Input must be between 1 and 25 characters and consist of numbers only."
         : true;
-    },
+    }
   });
 
   function asyncClearTerminalAfterDelay(digits, seconds, correctAnswer) {
@@ -42,8 +42,8 @@ async function main() {
       } else {
         console.log(
           `Your socre is ${answers.calcPoints(
-            answers.findIncorrectIndexes,
-          )}/100 points.`,
+            answers.findIncorrectIndexes
+          )}/100 points.`
         );
         console.log();
         resolve();
@@ -54,14 +54,14 @@ async function main() {
   function checkAnswerOrNot(answers) {
     const checkAnswerOrNotPrompt = new Select({
       message: "Do you check the answer?",
-      choices: ["yes", "no"],
+      choices: ["yes", "no"]
     });
 
     checkAnswerOrNotPrompt.run().then((key) => {
       if (key === "yes") {
         console.log("-- Your answer --");
         const formattedUsersAnswer = new Formatter(
-          answers.generateHighlightedNumbers(),
+          answers.generateHighlightedNumbers()
         );
         formattedUsersAnswer.selectFormat();
 

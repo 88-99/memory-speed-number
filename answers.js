@@ -53,7 +53,7 @@ export class Answers {
     const highlightedNumbers = this.#usersAnswer.map((number, index) =>
       this.findIncorrectIndexes().includes(index)
         ? `\x1b[7m${number}\x1b[0m`
-        : number,
+        : number
     );
     return highlightedNumbers;
   }
