@@ -42,8 +42,8 @@ async function main() {
       } else {
         console.log(
           `Your socre is ${answers.calcPoints(
-            answers.findIncorrectIndexes
-          )}/100 points.`
+            answers.findIncorrectIndexes,
+          )}/100 points.`,
         );
         console.log();
         resolve();
@@ -55,21 +55,21 @@ async function main() {
     const checkAnswerOrNotPrompt = new Select({
       message: "Do you check the answer?",
       choices: ["yes", "no"],
-    })
-      .run()
-      .then((key) => {
-        if (key === "yes") {
-          console.log("-- Your answer --");
-          const formattedUsersAnswer = new Formatter(
-            answers.generateHighlightedNumbers()
-          );
-          formattedUsersAnswer.selectFormat();
+    });
 
-          console.log("-- Correct answer --");
-          const formattedCorrectAnswer = new Formatter(answers.correctAnswer);
-          formattedCorrectAnswer.selectFormat();
-        }
-      });
+    checkAnswerOrNotPrompt.run().then((key) => {
+      if (key === "yes") {
+        console.log("-- Your answer --");
+        const formattedUsersAnswer = new Formatter(
+          answers.generateHighlightedNumbers(),
+        );
+        formattedUsersAnswer.selectFormat();
+
+        console.log("-- Correct answer --");
+        const formattedCorrectAnswer = new Formatter(answers.correctAnswer);
+        formattedCorrectAnswer.selectFormat();
+      }
+    });
   }
 
   try {
