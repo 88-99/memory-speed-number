@@ -15,7 +15,7 @@ npm install memory-speed-number
 Once the package is installed, you can use it by running the following command:
 
 ```
-number
+npx number
 ```
 
 When inputting the memorized numbers, you have the flexibility to include spaces and line breaks as you prefer. It's important to note that only numeric characters are allowed for input; any other non-numeric characters will be rejected.
