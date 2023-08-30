@@ -19,4 +19,6 @@ npx number
 ```
 
 When inputting the memorized numbers, you have the flexibility to include spaces and line breaks as you prefer. It's important to note that only numeric characters are allowed for input; any other non-numeric characters will be rejected.
-For including line breaks, simply press the "Enter" key once. To confirm your input, press the "Enter" key twice.
+For including line breaks, simply press the "Enter" key once.
+You can navigate back and make corrections using the ← key or control + B, even after entering values on a new line.
+To confirm your input, press the "Enter" key twice.
