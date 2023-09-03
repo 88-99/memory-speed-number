@@ -9,20 +9,16 @@ import enquirer from "enquirer";
 const { Select, Input } = enquirer;
 
 async function main() {
-  try {
-    const digits = 25;
-    const seconds = await selectSecondsPrompt().run();
-    const answers = new Answers(digits, "");
-    await asyncClearTerminalAfterDelay(digits, seconds, answers.correctAnswer);
+  const digits = 25;
+  const seconds = await selectSecondsPrompt().run();
+  const answers = new Answers(digits, "");
+  await asyncClearTerminalAfterDelay(digits, seconds, answers.correctAnswer);
 
-    let usersAnswer = await inputUsersAnswerPrompt().run();
-    answers.usersAnswer = usersAnswer;
-    await announcementResult(digits, answers);
+  let usersAnswer = await inputUsersAnswerPrompt().run();
+  answers.usersAnswer = usersAnswer;
+  await announcementResult(digits, answers);
 
-    checkAnswerOrNot(answers);
-  } catch (error) {
-    console.error("Error:", error);
-  }
+  checkAnswerOrNot(answers);
 }
 
 function selectSecondsPrompt() {
