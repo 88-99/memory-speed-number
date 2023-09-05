@@ -1,13 +1,13 @@
-# Memory Speed Number
+# Memory Speed Numbers
 
-_Memory Speed Number_ is a mini-game where you memorize randomly displayed numbers.
+_Memory Speed Numbers_ is a mini-game where you memorize randomly displayed numbers.
 
 ## Installation
 
-To add the _Memory Speed Number_ package to your project, run the following command:
+To add the _Memory Speed Numbers_ package to your project, run the following command:
 
 ```
-npm install memory-speed-number
+npm install memory-speed-numbers
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install memory-speed-number
 Once the package is installed, you can use it by running the following command:
 
 ```
-npx number
+npx numbers
 ```
 
 When inputting the memorized numbers, you have the flexibility to include spaces and line breaks as you prefer. It's important to note that only numeric characters are allowed for input; any other non-numeric characters will be rejected.

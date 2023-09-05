@@ -1,10 +1,10 @@
 {
-  "name": "memory-speed-number",
+  "name": "memory-speed-numbers",
   "version": "1.0.1",
-  "description": "Memory Speed Number is a mini memory game package",
+  "description": "Memory Speed Numbers is a mini memory game package",
   "main": "main.js",
   "bin": {
-    "number": "./main.js"
+    "numbers": "./main.js"
   },
   "devDependencies": {
     "eslint": "^8.47.0",
