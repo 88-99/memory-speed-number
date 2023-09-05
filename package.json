@@ -1,6 +1,6 @@
 {
   "name": "memory-speed-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Memory Speed Number is a mini memory game package",
   "main": "main.js",
   "bin": {
